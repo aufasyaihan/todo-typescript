@@ -23,17 +23,14 @@ const NewTodo = () => {
   // const isFormValid = isTitleEmpty && isDesctiptionEmpty;
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col p-4 m-5 rounded border border-gray-300 shadow-md"
-    >
+    <div className="flex flex-col p-4 m-5 rounded border border-gray-300 shadow-md">
       <div className="flex justify-between mb-2 border-b-2 pb-2">
         <h2 className="text-4xl font-bold">Add New Todo</h2>
         <button className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">
           Back
         </button>
       </div>
-      <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col my-2">
           <label htmlFor="title" className="font-semibold">
             Title
@@ -79,8 +76,8 @@ const NewTodo = () => {
         >
           Add Todo
         </button>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 
