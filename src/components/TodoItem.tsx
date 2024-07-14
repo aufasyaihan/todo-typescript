@@ -3,7 +3,7 @@ import React from "react";
 const TodoItem: React.FC<{ title: string; description: string }> = (props) => {
   return (
     <li>
-      <h3>{props.title}</h3>
+      <h3 className="text-3xl font-bold">{props.title}</h3>
       <p>{props.description}</p>
     </li>
   );
