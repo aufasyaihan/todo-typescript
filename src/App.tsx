@@ -1,4 +1,5 @@
 import NewTodo from "./components/NewTodo";
+import Sidebar from "./components/Sidebar";
 import Todos from "./components/Todos";
 import Todo from "./models/todo";
 
@@ -16,10 +17,13 @@ function App() {
     },
   ];
   return (
-    <>
-      <Todos items={todos} />
-      <NewTodo />
-    </>
+    <div className="flex">
+      <Sidebar />
+      <div className="p-10 w-full h-full">
+        <Todos items={todos} />
+        <NewTodo />
+      </div>
+    </div>
   );
 }
 
