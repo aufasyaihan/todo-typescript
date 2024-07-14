@@ -7,6 +7,11 @@ const TodoItem: React.FC<{
   onChangePage: (page: string | number) => void;
   onDeleteTodo: (id: number) => void;
 }> = (props) => {
+  const currentDate = new Date().toLocaleDateString("id-ID", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
   return (
     <div className="flex flex-col gap-5 p-4 m-5 rounded border border-gray-300 shadow-md">
       <div className="flex border-b border-gray-400 justify-between items-center pb-2">
@@ -26,7 +31,15 @@ const TodoItem: React.FC<{
           </Button>
         </div>
       </div>
-      <p className="text-gray-400">Due Date : {props.todo?.date}</p>
+      <p
+        className={
+          currentDate === props.todo?.date
+            ? "bg-red-500 text-white py-2 px-2 w-fit rounded"
+            : "text-gray-400"
+        }
+      >
+        Due Date : {props.todo?.date}
+      </p>
       <p>{props.todo?.description}</p>
     </div>
   );
