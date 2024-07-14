@@ -5,6 +5,7 @@ import Button from "../UI/Button";
 export interface NewTodoInput {
   title: string;
   description: string;
+  date: string;
 }
 
 const NewTodo: React.FC<{
@@ -40,25 +41,47 @@ const NewTodo: React.FC<{
         </Button>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-col my-2">
-          <label htmlFor="title" className="font-semibold">
-            Title
-          </label>
-          <input
-            {...register("title", { required: true })}
-            type="text"
-            name="title"
-            id="title"
-            placeholder="Masukkan Judul"
-            className={`w-1/3 border ${
-              errors.title
-                ? "border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
-                : "border-gray-300"
-            } rounded p-1`}
-          />
-          {errors.title && (
-            <p className="text-red-500">This field is required</p>
-          )}
+        <div className="flex justify-between gap-2 w-1/2">
+          <div className="flex flex-col my-2">
+            <label htmlFor="title" className="font-semibold">
+              Title
+            </label>
+            <input
+              {...register("title", { required: true })}
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Masukkan Judul"
+              className={`w-64 border ${
+                errors.title
+                  ? "border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                  : "border-gray-300"
+              } rounded p-1`}
+            />
+            {errors.title && (
+              <p className="text-red-500">Please input the Title</p>
+            )}
+          </div>
+          <div className="flex flex-col my-2">
+            <label htmlFor="date" className="font-semibold">
+              Due Date
+            </label>
+            <input
+              {...register("date", { required: true })}
+              type="date"
+              name="date"
+              id="date"
+              placeholder="Masukkan Deskripsi"
+              className={`w-64 border ${
+                errors.date
+                  ? "border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                  : "border-gray-300"
+              } rounded p-1`}
+            />
+            {errors.date && (
+              <p className="text-red-500">Please input the Date</p>
+            )}
+          </div>
         </div>
         <div className="flex flex-col my-2">
           <label htmlFor="description" className="font-semibold">
@@ -76,9 +99,10 @@ const NewTodo: React.FC<{
             } rounded p-1`}
           />
           {errors.description && (
-            <p className="text-red-500">This field is required</p>
+            <p className="text-red-500">Please input the Description</p>
           )}
         </div>
+
         <Button
           //disabled={!isFormValid}
           color="bg-gray-700 text-white hover:bg-gray-800"
