@@ -9,12 +9,18 @@ const NewTodo = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
-  } = useForm<NewTodoInput>();
+  } = useForm<NewTodoInput>({ mode: "onBlur" });
 
   const onSubmit = (data: NewTodoInput) => {
     console.log(data);
   };
+
+  const isTitleEmpty = watch("title");
+  const isDesctiptionEmpty = watch("description");
+
+  const isFormValid = isTitleEmpty && isDesctiptionEmpty;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full">
@@ -55,7 +61,10 @@ const NewTodo = () => {
           <p className="text-red-500">This field is required</p>
         )}
       </div>
-      <button className="px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-800">
+      <button
+        disabled={!isFormValid}
+        className="px-4 py-2 disabled:bg-gray-500 bg-gray-700 text-white rounded hover:bg-gray-800"
+      >
         Add Todo
       </button>
     </form>
