@@ -5,6 +5,7 @@ import Button from "../UI/Button";
 const TodoItem: React.FC<{
   todo?: Todo;
   onChangePage: (page: string | number) => void;
+  onDeleteTodo: (id: number) => void;
 }> = (props) => {
   return (
     <div className="flex flex-col gap-5 p-4 m-5 rounded border border-gray-300 shadow-md">
@@ -19,7 +20,7 @@ const TodoItem: React.FC<{
           </Button>
           <Button
             color="bg-red-500 text-white hover:bg-red-600"
-            onClick={() => props.onChangePage("home")}
+            onClick={() => props.onDeleteTodo(props.todo!.id)}
           >
             Delete
           </Button>

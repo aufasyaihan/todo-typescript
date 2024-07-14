@@ -38,6 +38,13 @@ function App() {
     });
     setPage("home");
   };
+
+  const deleteTodoHandler = (id: number) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter((todo) => todo.id !== id);
+    });
+    setPage("home");
+  }
   return (
     <div className="flex">
       <Sidebar todos={todos} onSelectTodo={selectTodoHandler} />
@@ -49,6 +56,7 @@ function App() {
         {page === selectedTodoId && (
           <TodoItem
             onChangePage={pageHandler}
+            onDeleteTodo={deleteTodoHandler}
             todo={todos.find((todo) => todo.id === selectedTodoId)}
           />
         )}
