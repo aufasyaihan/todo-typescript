@@ -15,7 +15,6 @@ const NewTodo: React.FC<{
   } = useForm<NewTodoInput>({ mode: "onBlur" });
 
   const onSubmit = (data: NewTodoInput) => {
-    console.log(data);
     props.onAddTodo(data);
   };
 
@@ -46,7 +45,7 @@ const NewTodo: React.FC<{
               type="text"
               name="title"
               id="title"
-              placeholder="Masukkan Judul"
+              placeholder="Main Task"
               className={`w-64 border ${
                 errors.title
                   ? "border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
@@ -66,7 +65,6 @@ const NewTodo: React.FC<{
               type="date"
               name="date"
               id="date"
-              placeholder="Masukkan Deskripsi"
               className={`w-64 border ${
                 errors.date
                   ? "border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
@@ -86,7 +84,7 @@ const NewTodo: React.FC<{
             {...register("description", { required: true })}
             name="description"
             id="description"
-            placeholder="Masukkan Deskripsi"
+            placeholder="What will you do?"
             className={`w-1/2 h-32 border ${
               errors.description
                 ? "border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"

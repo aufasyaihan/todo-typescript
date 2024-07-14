@@ -38,7 +38,7 @@ const TodoItem: React.FC<{
             : "text-gray-400"
         }
       >
-        Due Date : {props.todo?.date}
+        Due Date : {currentDate === props.todo?.date ? "Today!" : props.todo?.date}
       </p>
       <p>{props.todo?.description}</p>
     </div>
