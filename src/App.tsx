@@ -4,9 +4,15 @@ import Sidebar from "./components/Sidebar";
 import Todo from "./models/todo";
 import { NewTodoInput } from "./components/NewTodo";
 import { useState } from "react";
+import HomePage from "./components/HomePage";
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [page, setPage] = useState<string | number>("home");
+
+  const pageHandler = (page: string | number) => {
+    setPage(page);
+  };
 
   const addTodoHandler = (todo: NewTodoInput) => {
     setTodos((prevTodos) => {
@@ -22,9 +28,11 @@ function App() {
   };
   return (
     <div className="flex">
-      <Sidebar todos={todos}/>
+      <Sidebar todos={todos} />
       <div className="w-full h-full">
-        <NewTodo onAddTodo={addTodoHandler} />
+        {page === "home" && <HomePage onClick={pageHandler} />}
+        {page === "add" && <NewTodo onAddTodo={addTodoHandler} />}
+
         {/* <Todos items={todos} /> */}
       </div>
     </div>

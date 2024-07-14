@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import Button from "../UI/Button";
 
 export interface NewTodoInput {
   title: string;
@@ -74,12 +75,11 @@ const NewTodo: React.FC<{ onAddTodo: (todo: NewTodoInput) => void }> = (
             <p className="text-red-500">This field is required</p>
           )}
         </div>
-        <button
-          //disabled={!isFormValid}
-          className="px-4 py-2 disabled:bg-gray-500 bg-gray-700 text-white rounded hover:bg-gray-800"
+        <Button
+        //disabled={!isFormValid}
         >
           Add Todo
-        </button>
+        </Button>
       </form>
     </div>
   );
