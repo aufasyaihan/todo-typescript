@@ -11,7 +11,7 @@ const Sidebar: React.FC<{ todos: Todo[] , onSelectTodo: (page: number) => void }
         </h2>
       </div>
       <ul className="mt-2">
-        <Todos onClick={props.onSelectTodo} items={props.todos} />
+        {props.todos.length > 0 ? <Todos onClick={props.onSelectTodo} items={props.todos} /> : <p className="text-gray-400">You have nothing to do, add todos now</p>}
       </ul>
     </div>
   );
