@@ -47,7 +47,10 @@ function App() {
           <NewTodo onAddTodo={addTodoHandler} onClick={pageHandler} />
         )}
         {page === selectedTodoId && (
-          <TodoItem todo={todos.find((todo) => todo.id === selectedTodoId)} />
+          <TodoItem
+            onChangePage={pageHandler}
+            todo={todos.find((todo) => todo.id === selectedTodoId)}
+          />
         )}
       </div>
     </div>
