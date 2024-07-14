@@ -9,15 +9,21 @@ const TodoItem: React.FC<{
   return (
     <div className="flex flex-col gap-5 p-4 m-5 rounded border border-gray-300 shadow-md">
       <div className="flex border-b border-gray-400 justify-between items-center pb-2">
-        <h3 className="text-3xl font-bold ">
-          {props.todo?.title}
-        </h3>
-        <Button
-          color="bg-red-500 text-white hover:bg-red-600"
-          onClick={() => props.onChangePage("home")}
-        >
-          Home
-        </Button>
+        <h3 className="text-3xl font-bold ">{props.todo?.title}</h3>
+        <div className="flex gap-2">
+          <Button
+            color="bg-gray-700 text-white hover:bg-gray-800"
+            onClick={() => props.onChangePage("home")}
+          >
+            Home
+          </Button>
+          <Button
+            color="bg-red-500 text-white hover:bg-red-600"
+            onClick={() => props.onChangePage("home")}
+          >
+            Delete
+          </Button>
+        </div>
       </div>
       <p className="text-gray-400">Due Date : {props.todo?.date}</p>
       <p>{props.todo?.description}</p>

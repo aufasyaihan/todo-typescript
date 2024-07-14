@@ -6,7 +6,7 @@ const Sidebar: React.FC<{ todos: Todo[] , onSelectTodo: (page: number) => void }
   return (
     <div className="py-10 pl-5 px-10 w-72 h-screen bg-gray-800 text-white">
       <div className="w-full">
-        <h2 className="text-4xl font-bold tracking-wider underline underline-offset-4 decoration-red-500">
+        <h2 className="text-4xl font-bold tracking-wider underline underline-offset-4 decoration-blue-500">
           Todo
         </h2>
       </div>
