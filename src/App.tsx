@@ -1,6 +1,6 @@
 import NewTodo from "./components/NewTodo";
 import Sidebar from "./components/Sidebar";
-import Todos from "./components/Todos";
+// import Todos from "./components/Todos";
 import Todo from "./models/todo";
 import { NewTodoInput } from "./components/NewTodo";
 import { useState } from "react";
@@ -22,10 +22,10 @@ function App() {
   };
   return (
     <div className="flex">
-      <Sidebar />
+      <Sidebar todos={todos}/>
       <div className="w-full h-full">
         <NewTodo onAddTodo={addTodoHandler} />
-        <Todos items={todos} />
+        {/* <Todos items={todos} /> */}
       </div>
     </div>
   );
