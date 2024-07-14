@@ -1,27 +1,31 @@
 import NewTodo from "./components/NewTodo";
 import Sidebar from "./components/Sidebar";
-// import Todos from "./components/Todos";
-// import Todo from "./models/todo";
+import Todos from "./components/Todos";
+import Todo from "./models/todo";
+import { NewTodoInput } from "./components/NewTodo";
+import { useState } from "react";
 
 function App() {
-  // const todos: Todo[] = [
-  //   {
-  //     id: +new Date() + Math.random(),
-  //     title: "learn react with js",
-  //     description: "i want to learn react with js",
-  //   },
-  //   {
-  //     id: +new Date() + Math.random(),
-  //     title: "learn react with ts",
-  //     description: "i want to learn react with ts",
-  //   },
-  // ];
+  const [todos, setTodos] = useState<Todo[]>([]);
+
+  const addTodoHandler = (todo: NewTodoInput) => {
+    setTodos((prevTodos) => {
+      return [
+        ...prevTodos,
+        {
+          id: +new Date() + Math.random(),
+          title: todo.title,
+          description: todo.description,
+        },
+      ];
+    });
+  };
   return (
     <div className="flex">
       <Sidebar />
       <div className="w-full h-full">
-        {/* <Todos items={todos} /> */}
-        <NewTodo />
+        <NewTodo onAddTodo={addTodoHandler} />
+        <Todos items={todos} />
       </div>
     </div>
   );

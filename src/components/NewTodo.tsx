@@ -1,11 +1,14 @@
+import React from "react";
 import { useForm } from "react-hook-form";
 
-interface NewTodoInput {
+export interface NewTodoInput {
   title: string;
   description: string;
 }
 
-const NewTodo = () => {
+const NewTodo: React.FC<{ onAddTodo: (todo: NewTodoInput) => void }> = (
+  props
+) => {
   const {
     register,
     handleSubmit,
@@ -15,6 +18,7 @@ const NewTodo = () => {
 
   const onSubmit = (data: NewTodoInput) => {
     console.log(data);
+    props.onAddTodo(data);
   };
 
   // const isTitleEmpty = watch("title");
