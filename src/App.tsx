@@ -31,7 +31,9 @@ function App() {
       <Sidebar todos={todos} />
       <div className="w-full h-full">
         {page === "home" && <HomePage onClick={pageHandler} />}
-        {page === "add" && <NewTodo onAddTodo={addTodoHandler} />}
+        {page === "add" && (
+          <NewTodo onAddTodo={addTodoHandler} onClick={pageHandler} />
+        )}
 
         {/* <Todos items={todos} /> */}
       </div>

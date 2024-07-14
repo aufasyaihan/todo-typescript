@@ -7,9 +7,10 @@ export interface NewTodoInput {
   description: string;
 }
 
-const NewTodo: React.FC<{ onAddTodo: (todo: NewTodoInput) => void }> = (
-  props
-) => {
+const NewTodo: React.FC<{
+  onAddTodo: (todo: NewTodoInput) => void;
+  onClick: (page: string | number) => void;
+}> = (props) => {
   const {
     register,
     handleSubmit,
@@ -31,9 +32,12 @@ const NewTodo: React.FC<{ onAddTodo: (todo: NewTodoInput) => void }> = (
     <div className="flex flex-col p-4 m-5 rounded border border-gray-300 shadow-md">
       <div className="flex justify-between mb-2 border-b-2 pb-2">
         <h2 className="text-4xl font-bold">Add New Todo</h2>
-        <button className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">
+        <Button
+          color="bg-red-500 text-white hover:bg-red-600"
+          onClick={() => props.onClick("home")}
+        >
           Back
-        </button>
+        </Button>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col my-2">
@@ -76,7 +80,8 @@ const NewTodo: React.FC<{ onAddTodo: (todo: NewTodoInput) => void }> = (
           )}
         </div>
         <Button
-        //disabled={!isFormValid}
+          //disabled={!isFormValid}
+          color="bg-gray-700 text-white hover:bg-gray-800"
         >
           Add Todo
         </Button>
