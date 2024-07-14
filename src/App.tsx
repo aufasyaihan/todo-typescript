@@ -1,8 +1,7 @@
 import { useState } from "react";
 import NewTodo from "./components/NewTodo";
 import Sidebar from "./components/Sidebar";
-import Todo from "./models/todo";
-import { NewTodoInput } from "./components/NewTodo";
+import Todo, { NewTodoInput } from "./models/todo";
 import HomePage from "./components/HomePage";
 import TodoItem from "./components/TodoItem";
 

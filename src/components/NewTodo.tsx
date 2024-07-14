@@ -1,12 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import Button from "../UI/Button";
-
-export interface NewTodoInput {
-  title: string;
-  description: string;
-  date: string;
-}
+import { NewTodoInput } from "../models/todo";
 
 const NewTodo: React.FC<{
   onAddTodo: (todo: NewTodoInput) => void;
