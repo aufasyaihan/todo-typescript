@@ -40,13 +40,13 @@ const TodoItem: React.FC<{
       </div>
       <p
         className={
-          currentDate === props.todo?.date
+          currentDate === props.todo?.date || currentDate > props.todo!.date
             ? "bg-red-500 text-white py-2 px-2 w-fit rounded"
             : "text-gray-400"
         }
       >
         Due Date :{" "}
-        {currentDate === props.todo?.date ? "Today!" : props.todo?.date}
+        {currentDate === props.todo?.date ? "Today!" : currentDate > props.todo!.date ? `Overdue! it was supposed to be ${props.todo?.date}` : props.todo?.date}
       </p>
       <p>{props.todo?.description}</p>
     </div>
