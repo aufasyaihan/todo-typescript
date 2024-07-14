@@ -1,63 +1,25 @@
-import { useState } from "react";
 import NewTodo from "./components/NewTodo";
 import Sidebar from "./components/Sidebar";
-import Todo, { NewTodoInput } from "./models/todo";
 import HomePage from "./components/HomePage";
 import TodoItem from "./components/TodoItem";
+import { useSelector } from "react-redux";
+import { RootState } from "./store/store";
 
 function App() {
-  const [todos, setTodos] = useState<Todo[]>([]);
-  const [selectedTodoId, setSelectedTodoId] = useState<number | null>(null);
-  const [page, setPage] = useState<string | number>("home");
+  const todos = useSelector((state: RootState) => state.todos.todos);
+  const selectedTodoId = useSelector(
+    (state: RootState) => state.todos.selectedTodoId
+  );
+  const page = useSelector((state: RootState) => state.page.page);
 
-  const pageHandler = (page: string | number) => {
-    setPage(page);
-  };
-
-  const selectTodoHandler = (id: number) => {
-    setSelectedTodoId(id);
-    setPage(id);
-  };
-
-  const addTodoHandler = (todo: NewTodoInput) => {
-    setTodos((prevTodos) => {
-      return [
-        ...prevTodos,
-        {
-          id: +new Date() + Math.random(),
-          title: todo.title,
-          description: todo.description,
-          date: new Date(todo.date).toLocaleDateString("id-ID", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          }),
-        },
-      ];
-    });
-    setPage("home");
-  };
-
-  const deleteTodoHandler = (id: number) => {
-    setTodos((prevTodos) => {
-      return prevTodos.filter((todo) => todo.id !== id);
-    });
-    setPage("home");
-  }
   return (
     <div className="flex">
-      <Sidebar todos={todos} onSelectTodo={selectTodoHandler} />
+      <Sidebar todos={todos} />
       <div className="w-full h-full">
-        {page === "home" && <HomePage onClick={pageHandler} />}
-        {page === "add" && (
-          <NewTodo onAddTodo={addTodoHandler} onClick={pageHandler} />
-        )}
+        {page === "home" && <HomePage />}
+        {page === "add" && <NewTodo />}
         {page === selectedTodoId && (
-          <TodoItem
-            onChangePage={pageHandler}
-            onDeleteTodo={deleteTodoHandler}
-            todo={todos.find((todo) => todo.id === selectedTodoId)}
-          />
+          <TodoItem todo={todos.find((todo) => todo.id === selectedTodoId)} />
         )}
       </div>
     </div>

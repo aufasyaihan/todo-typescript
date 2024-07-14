@@ -1,17 +1,24 @@
 import React from "react";
 import Todo from "../models/todo";
 import Button from "../UI/Button";
+import { useDispatch } from "react-redux";
+import { deleteTodo } from "../store/todosSlice";
+import { setPage } from "../store/pageSlice";
 
 const TodoItem: React.FC<{
   todo?: Todo;
-  onChangePage: (page: string | number) => void;
-  onDeleteTodo: (id: number) => void;
 }> = (props) => {
   const currentDate = new Date().toLocaleDateString("id-ID", {
     year: "numeric",
     month: "short",
     day: "numeric",
   });
+  const dispatch = useDispatch();
+
+  const deleteTodoHandler = (id: number) => {
+    dispatch(deleteTodo(id));
+    dispatch(setPage("home"));
+  };
   return (
     <div className="flex flex-col gap-5 p-4 m-5 rounded border border-gray-300 shadow-md">
       <div className="flex border-b border-gray-400 justify-between items-center pb-2">
@@ -19,13 +26,13 @@ const TodoItem: React.FC<{
         <div className="flex gap-2">
           <Button
             color="bg-gray-700 text-white hover:bg-gray-800"
-            onClick={() => props.onChangePage("home")}
+            onClick={() => dispatch(setPage("home"))}
           >
             Home
           </Button>
           <Button
             color="bg-red-500 text-white hover:bg-red-600"
-            onClick={() => props.onDeleteTodo(props.todo!.id)}
+            onClick={() => deleteTodoHandler(props.todo!.id)}
           >
             Delete
           </Button>
@@ -38,7 +45,8 @@ const TodoItem: React.FC<{
             : "text-gray-400"
         }
       >
-        Due Date : {currentDate === props.todo?.date ? "Today!" : props.todo?.date}
+        Due Date :{" "}
+        {currentDate === props.todo?.date ? "Today!" : props.todo?.date}
       </p>
       <p>{props.todo?.description}</p>
     </div>

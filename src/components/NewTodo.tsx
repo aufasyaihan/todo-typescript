@@ -2,20 +2,22 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Button from "../UI/Button";
 import { NewTodoInput } from "../models/todo";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../store/todosSlice";
+import { setPage } from "../store/pageSlice";
 
-const NewTodo: React.FC<{
-  onAddTodo: (todo: NewTodoInput) => void;
-  onClick: (page: string | number) => void;
-}> = (props) => {
+const NewTodo: React.FC = () => {
   const {
     register,
     handleSubmit,
     //watch,
     formState: { errors },
   } = useForm<NewTodoInput>({ mode: "onBlur" });
+  const dispatch = useDispatch();
 
   const onSubmit = (data: NewTodoInput) => {
-    props.onAddTodo(data);
+    dispatch(addTodo(data));
+    dispatch(setPage("home"));
   };
 
   // const isTitleEmpty = watch("title");
@@ -29,7 +31,7 @@ const NewTodo: React.FC<{
         <h2 className="text-4xl font-bold">Add New Todo</h2>
         <Button
           color="bg-red-500 text-white hover:bg-red-600"
-          onClick={() => props.onClick("home")}
+          onClick={() => dispatch(setPage("home"))}
         >
           Back
         </Button>

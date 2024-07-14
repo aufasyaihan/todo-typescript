@@ -1,9 +1,14 @@
 import React from "react";
 import Button from "../UI/Button";
+import { useDispatch } from "react-redux";
+import { setPage } from "../store/pageSlice";
 
-const HomePage: React.FC<{ onClick: (page: string | number) => void }> = (
-  props
-) => {
+const HomePage: React.FC = () => {
+  const dispatch = useDispatch();
+
+  const pageHandler = (page: string | number) => {
+    dispatch(setPage(page));
+  };
   return (
     <div className="flex flex-col gap-5 justify-center items-center h-screen w-full">
       <h1 className="text-4xl">
@@ -13,7 +18,7 @@ const HomePage: React.FC<{ onClick: (page: string | number) => void }> = (
       <div className="flex items-center gap-5">
         <Button
           color="bg-gray-700 text-white hover:bg-gray-800"
-          onClick={() => props.onClick("add")}
+          onClick={() => pageHandler("add")}
         >
           Add New Todo
         </Button>
