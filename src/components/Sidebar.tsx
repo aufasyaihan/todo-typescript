@@ -1,5 +1,6 @@
 import React from "react";
 import Todo from "../models/todo";
+import Todos from "./Todos";
 
 const Sidebar: React.FC<{ todos: Todo[] }> = (props) => {
   return (
@@ -9,16 +10,9 @@ const Sidebar: React.FC<{ todos: Todo[] }> = (props) => {
           Todo
         </h2>
       </div>
-      <div className="mt-2">
-        {props.todos.map((item) => (
-          <button
-            key={item.id}
-            className="w-full text-start py-2 px-2 rounded hover:bg-gray-600"
-          >
-            <h3>{item.title}</h3>
-          </button>
-        ))}
-      </div>
+      <ul className="mt-2">
+        <Todos items={props.todos} />
+      </ul>
     </div>
   );
 };

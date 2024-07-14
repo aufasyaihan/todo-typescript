@@ -1,9 +1,8 @@
+import { useState } from "react";
 import NewTodo from "./components/NewTodo";
 import Sidebar from "./components/Sidebar";
-// import Todos from "./components/Todos";
 import Todo from "./models/todo";
 import { NewTodoInput } from "./components/NewTodo";
-import { useState } from "react";
 import HomePage from "./components/HomePage";
 
 function App() {
@@ -34,8 +33,6 @@ function App() {
         {page === "add" && (
           <NewTodo onAddTodo={addTodoHandler} onClick={pageHandler} />
         )}
-
-        {/* <Todos items={todos} /> */}
       </div>
     </div>
   );
