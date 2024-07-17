@@ -4,6 +4,8 @@ export interface PageState {
   page: string | number;
 }
 
+export type ID = string | number; 
+
 const initialState: PageState = {
   page: "home",
 };
@@ -12,7 +14,7 @@ const pageSlice = createSlice({
   name: "page",
   initialState,
   reducers: {
-    setPage: (state, action: PayloadAction<string | number>) => {
+    setPage: (state, action: PayloadAction<ID>) => {
       state.page = action.payload;
     },
   },
