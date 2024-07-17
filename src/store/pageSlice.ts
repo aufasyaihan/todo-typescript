@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export interface PageState {
-  page: string | number;
-}
-
 export type ID = string | number; 
+
+export interface PageState {
+  page: ID;
+}
 
 const initialState: PageState = {
   page: "home",
