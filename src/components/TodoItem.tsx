@@ -8,17 +8,27 @@ import { setPage } from "../store/pageSlice";
 const TodoItem: React.FC<{
   todo?: Todo;
 }> = (props) => {
-  const currentDate = new Date().toLocaleDateString("id-ID", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
+  const currentDate = new Date().toLocaleDateString();
+  const todoDate = props.todo!.date.toLocaleDateString();
+
   const dispatch = useDispatch();
+
+  const isToday = currentDate === todoDate;
+  const isOverdue = currentDate > todoDate;
 
   const deleteTodoHandler = (id: number) => {
     dispatch(deleteTodo(id));
     dispatch(setPage("home"));
   };
+
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
   return (
     <div className="flex flex-col gap-5 p-4 m-5 rounded border border-gray-300 shadow-md">
       <div className="flex border-b border-gray-400 justify-between items-center pb-2">
@@ -40,13 +50,17 @@ const TodoItem: React.FC<{
       </div>
       <p
         className={
-          currentDate === props.todo?.date || currentDate > props.todo!.date
+          isToday || isOverdue
             ? "bg-red-500 text-white py-2 px-2 w-fit rounded"
             : "text-gray-400"
         }
       >
         Due Date :{" "}
-        {currentDate === props.todo?.date ? "Today!" : currentDate > props.todo!.date ? `Overdue! it was supposed to be ${props.todo?.date}` : props.todo?.date}
+        {isToday
+          ? "Today!"
+          : isOverdue
+          ? `Overdue! it was supposed to be ${formatDate(props.todo!.date)}`
+          : formatDate(props.todo!.date)}
       </p>
       <p>{props.todo?.description}</p>
     </div>

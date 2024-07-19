@@ -20,11 +20,7 @@ const todosSlice = createSlice({
         id: +new Date() + Math.random(),
         title: action.payload.title,
         description: action.payload.description,
-        date: new Date(action.payload.date).toLocaleDateString('id-ID', {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric',
-        }),
+        date: new Date(action.payload.date),
       });
     },
     deleteTodo: (state, action: PayloadAction<number>) => {
