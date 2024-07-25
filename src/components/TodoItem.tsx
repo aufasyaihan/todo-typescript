@@ -2,8 +2,7 @@ import React from "react";
 import Button from "../UI/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTodo } from "../store/todosSlice";
-import { setPage } from "../store/pageSlice";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { RootState } from "../store/store";
 
 const TodoItem: React.FC = () => {
@@ -38,12 +37,9 @@ const TodoItem: React.FC = () => {
       <div className="flex border-b border-gray-400 justify-between items-center pb-2">
         <h3 className="text-3xl font-bold ">{todo?.title}</h3>
         <div className="flex gap-2">
-          <Button
-            color="bg-gray-700 text-white hover:bg-gray-800"
-            onClick={() => dispatch(setPage("home"))}
-          >
+          <Link to="/" className="px-4 py-2 rounded bg-gray-700 text-white hover:bg-gray-800">
             Home
-          </Button>
+          </Link>
           <Button
             color="bg-red-500 text-white hover:bg-red-600"
             onClick={() => deleteTodoHandler(todo!.id)}

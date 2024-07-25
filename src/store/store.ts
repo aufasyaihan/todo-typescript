@@ -1,11 +1,9 @@
-import { configureStore } from '@reduxjs/toolkit';
-import todosReducer from './todosSlice';
-import pageReducer from './pageSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import todosReducer from "./todosSlice";
 
 const store = configureStore({
   reducer: {
     todos: todosReducer,
-    page: pageReducer,
   },
 });
 
