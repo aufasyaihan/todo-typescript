@@ -25,7 +25,7 @@ const Sidebar: React.FC<{
               show || isMedium ? "opacity-100 w-full" : "opacity-0 w-0"
             }`}
           >
-            Todo
+            Todo<span className="text-blue-500 underline underline-offset-4 decoration-white">List</span>
           </h2>
           <div
             className="md:hidden cursor-pointer"
