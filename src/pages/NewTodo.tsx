@@ -28,19 +28,19 @@ const NewTodo: React.FC = () => {
   // const isFormValid = isTitleEmpty && isDesctiptionEmpty;
 
   return (
-    <div className="flex flex-col p-4 m-5 rounded border border-gray-300 shadow-md">
-      <div className="flex justify-between mb-2 border-b-2 pb-2">
-        <h2 className="text-4xl font-bold">Add New Todo</h2>
+    <div className="flex flex-col flex-wrap p-4 m-5 rounded border border-gray-300 shadow-md">
+      <div className="flex justify-between items-start flex-col-reverse sm:flex-row mb-2 border-b-2 pb-2">
+        <h2 className="w-full text-xl sm:text-4xl font-bold">Add New Todo</h2>
         <Link
           to="/"
-          className="px-4 py-2 rounded bg-red-500 text-white hover:bg-red-600"
+          className="md:scale-100 px-4 py-2 rounded bg-red-500 text-white hover:bg-red-600"
         >
           Back
         </Link>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex justify-between gap-2 w-1/2">
-          <div className="flex flex-col my-2">
+        <div className="flex flex-wrap gap-2 md:flex-nowrap md:w-1/2">
+          <div className="flex flex-col w-full my-2">
             <label htmlFor="title" className="font-semibold">
               Title
             </label>
@@ -50,7 +50,7 @@ const NewTodo: React.FC = () => {
               name="title"
               id="title"
               placeholder="Main Task"
-              className={`w-64 border ${
+              className={`w-full border ${
                 errors.title
                   ? "border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                   : "border-gray-300"
@@ -60,7 +60,7 @@ const NewTodo: React.FC = () => {
               <p className="text-red-500">Please input the Title</p>
             )}
           </div>
-          <div className="flex flex-col my-2">
+          <div className="flex flex-col w-full my-2">
             <label htmlFor="date" className="font-semibold">
               Due Date
             </label>
@@ -69,7 +69,7 @@ const NewTodo: React.FC = () => {
               type="date"
               name="date"
               id="date"
-              className={`w-64 border ${
+              className={`w-full border ${
                 errors.date
                   ? "border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                   : "border-gray-300"
@@ -80,7 +80,7 @@ const NewTodo: React.FC = () => {
             )}
           </div>
         </div>
-        <div className="flex flex-col my-2">
+        <div className="flex flex-col my-2 md:w-1/2">
           <label htmlFor="description" className="font-semibold">
             Description
           </label>
@@ -89,7 +89,7 @@ const NewTodo: React.FC = () => {
             name="description"
             id="description"
             placeholder="What will you do?"
-            className={`w-1/2 h-32 border ${
+            className={`w-full h-32 border ${
               errors.description
                 ? "border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                 : "border-gray-300"
