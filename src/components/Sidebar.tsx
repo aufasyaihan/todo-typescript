@@ -17,17 +17,20 @@ const Sidebar: React.FC<{
       <div
         className={`md:static py-10 px-5 z-10 ${
           show ? "absolute w-72" : "w-[5.4rem]"
-        } h-screen bg-gray-800 md:w-72 text-white transition-all ease-in-out duration-300`}
+        } h-screen bg-gray-800 md:w-72 text-white transition-width ease-in-out duration-300`}
       >
         <div className="flex justify-between items-center w-full">
           <h2
-            className={`text-4xl ${
-              !show ? "hidden" : "block"
-            } md:block font-bold tracking-wider underline underline-offset-4 decoration-blue-500`}
+            className={`text-4xl font-bold tracking-wider underline underline-offset-4 decoration-blue-500 transition-all duration-300 ease-in-out overflow-hidden ${
+              show || isMedium ? "opacity-100 w-full" : "opacity-0 w-0"
+            }`}
           >
             Todo
           </h2>
-          <div className="md:hidden cursor-pointer" onClick={showSidebarHandler}>
+          <div
+            className="md:hidden cursor-pointer"
+            onClick={showSidebarHandler}
+          >
             <svg
               width="45px"
               height="45px"
@@ -76,12 +79,15 @@ const Sidebar: React.FC<{
                   <NavLink
                     to={`/${todo.id}`}
                     className={({ isActive }) =>
-                      `block px-4 py-2 ${show || isMedium ? "text-start" : "text-center"}  rounded ${
+                      `block px-4 py-2 ${
+                        show || isMedium ? "text-start" : "text-center"
+                      }  rounded ${
                         isActive
                           ? "bg-gray-700 text-white"
                           : "hover:bg-gray-700"
                       }`
                     }
+                    onClick={() => setShow(false)}
                   >
                     {show || isMedium ? todo.title : index + 1}
                   </NavLink>
