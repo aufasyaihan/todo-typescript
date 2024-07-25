@@ -14,7 +14,7 @@ const Sidebar: React.FC<{
   };
   return (
     <>
-      <div
+      <nav
         className={`md:static py-10 px-5 z-10 ${
           show ? "absolute w-72" : "w-[5.4rem]"
         } h-screen bg-gray-800 md:w-72 text-white transition-width ease-in-out duration-300`}
@@ -99,7 +99,7 @@ const Sidebar: React.FC<{
                 </p>
               )}
         </ul>
-      </div>
+      </nav>
     </>
   );
 };

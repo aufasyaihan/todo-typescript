@@ -33,7 +33,7 @@ const TodoItem: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col gap-5 p-4 md:m-5 rounded border border-gray-300 shadow-md">
+    <section className="flex flex-col gap-5 p-4 md:m-5 rounded border border-gray-300 shadow-md">
       <div className="flex gap-6 items-start flex-col-reverse md:flex-row border-b border-gray-400 justify-between md:items-center pb-2">
         <h3 className="text-2xl w-full md:text-3xl font-bold ">{todo?.title}</h3>
         <div className="flex gap-2">
@@ -63,7 +63,7 @@ const TodoItem: React.FC = () => {
           : formatDate(todo!.date)}
       </p>
       <p className="text-sm md:text-md">{todo?.description}</p>
-    </div>
+    </section>
   );
 };
 

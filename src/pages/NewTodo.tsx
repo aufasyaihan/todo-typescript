@@ -28,7 +28,7 @@ const NewTodo: React.FC = () => {
   // const isFormValid = isTitleEmpty && isDesctiptionEmpty;
 
   return (
-    <div className="flex flex-col flex-wrap p-4 md:m-5 rounded border border-gray-300 shadow-md">
+    <section className="flex flex-col flex-wrap p-4 md:m-5 rounded border border-gray-300 shadow-md">
       <div className="flex gap-6 justify-between items-start flex-col-reverse sm:flex-row mb-2 border-b-2 pb-2">
         <h2 className="w-full text-2xl sm:text-4xl font-bold">Add New Todo</h2>
         <Link
@@ -107,7 +107,7 @@ const NewTodo: React.FC = () => {
           Add Todo
         </Button>
       </form>
-    </div>
+    </section>
   );
 };
 

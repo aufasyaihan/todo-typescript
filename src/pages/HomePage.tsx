@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const HomePage: React.FC = () => {
   return (
-    <div className="flex flex-col gap-5 px-5 md:px-0 justify-center items-center h-screen w-full">
+    <section className="flex flex-col gap-5 px-5 md:px-0 justify-center items-center h-screen w-full">
       <h1 className="text-4xl text-center">
         Welcome to Todos with{" "}
         <span className="font-semibold text-blue-600">TypeScript</span>
@@ -17,7 +17,7 @@ const HomePage: React.FC = () => {
         </Link>
         <p className="text-center">Or click todo on the sidebar</p>
       </div>
-    </div>
+    </section>
   );
 };
 
