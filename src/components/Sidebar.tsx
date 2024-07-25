@@ -62,13 +62,22 @@ const Sidebar: React.FC<{
             </svg>
           </div>
         </div>
-        <ul className="mt-2">
+        <ul className="mt-2 w-full">
           {props.todos.length > 0 ? (
             // <Todos onClick={selectTodoHandler} items={props.todos} />
             props.todos.map((todo) => (
-              <NavLink key={todo.id} to={`/${todo.id}`}>
-                {todo.title}
-              </NavLink>
+              <li key={todo.id} className="w-full">
+                <NavLink
+                  to={`/${todo.id}`}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "block bg-gray-700 text-white px-4 py-2 rounded"
+                      : "block px-4 py-2 rounded hover:bg-gray-700"
+                  }
+                >
+                  {todo.title}
+                </NavLink>
+              </li>
             ))
           ) : (
             <p className="text-gray-400">
