@@ -1,14 +1,7 @@
 import React from "react";
-import Button from "../UI/Button";
-import { useDispatch } from "react-redux";
-import { setPage } from "../store/pageSlice";
+import { Link } from "react-router-dom";
 
 const HomePage: React.FC = () => {
-  const dispatch = useDispatch();
-
-  const pageHandler = (page: string | number) => {
-    dispatch(setPage(page));
-  };
   return (
     <div className="flex flex-col gap-5 justify-center items-center h-screen w-full">
       <p className="absolute top-0 m-2 flex gap-2 items-center bg-blue-200 w-fit px-3 py-2 rounded">
@@ -31,12 +24,12 @@ const HomePage: React.FC = () => {
         <span className="font-semibold text-blue-600">TypeScript</span>
       </h1>
       <div className="flex items-center gap-5">
-        <Button
-          color="bg-gray-700 text-white hover:bg-gray-800"
-          onClick={() => pageHandler("add")}
+        <Link
+          className="px-4 py-2 disabled:bg-gray-500 rounded bg-gray-700 text-white hover:bg-gray-800"
+          to="/add"
         >
           Add New Todo
-        </Button>
+        </Link>
         <p>Or click todo on the sidebar</p>
       </div>
     </div>

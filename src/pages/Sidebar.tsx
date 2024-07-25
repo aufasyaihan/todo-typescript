@@ -16,28 +16,72 @@ const Sidebar: React.FC<{
   // };
   return (
     <>
-      <div className="py-10 pl-5 px-10 w-72 h-screen bg-gray-800 text-white">
-        <div className="w-full">
-          <h2 className="text-4xl font-bold tracking-wider underline underline-offset-4 decoration-blue-500">
-            Todo
-          </h2>
+      <div className="flex h-screen">
+        <div className="absolute md:static py-10 pl-5 px-10 w-72 h-screen bg-gray-800 text-white">
+          <div className="flex items-center w-full">
+            <h2 className="text-4xl font-bold tracking-wider underline underline-offset-4 decoration-blue-500">
+              Todo
+            </h2>
+            <div className="md:hidden">
+              <svg
+                width="45px"
+                height="45px"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                stroke="#FFFFFF"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+
+                <g id="SVGRepo_iconCarrier">
+                  {" "}
+                  <path
+                    d="M4 18L20 18"
+                    stroke="#FFFFFF"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />{" "}
+                  <path
+                    d="M4 12L20 12"
+                    stroke="#FFFFFF"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />{" "}
+                  <path
+                    d="M4 6L20 6"
+                    stroke="#FFFFFF"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />{" "}
+                </g>
+              </svg>
+            </div>
+          </div>
+          <ul className="mt-2">
+            {props.todos.length > 0 ? (
+              // <Todos onClick={selectTodoHandler} items={props.todos} />
+              props.todos.map((todo) => (
+                <NavLink key={todo.id} to="/todos" className="text-white">
+                  {todo.title}
+                </NavLink>
+              ))
+            ) : (
+              <p className="text-gray-400">
+                You have nothing to do, add todos now
+              </p>
+            )}
+          </ul>
         </div>
-        <ul className="mt-2">
-          {props.todos.length > 0 ? (
-            // <Todos onClick={selectTodoHandler} items={props.todos} />
-            props.todos.map((todo) => (
-              <NavLink key={todo.id} to="/todos" className="text-white">
-                {todo.title}
-              </NavLink>
-            ))
-          ) : (
-            <p className="text-gray-400">
-              You have nothing to do, add todos now
-            </p>
-          )}
-        </ul>
+        <div className="flex-1 h-screen">
+          <Outlet />
+        </div>
       </div>
-      <Outlet />
     </>
   );
 };
