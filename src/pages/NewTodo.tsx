@@ -28,9 +28,9 @@ const NewTodo: React.FC = () => {
   // const isFormValid = isTitleEmpty && isDesctiptionEmpty;
 
   return (
-    <div className="flex flex-col flex-wrap p-4 m-5 rounded border border-gray-300 shadow-md">
-      <div className="flex justify-between items-start flex-col-reverse sm:flex-row mb-2 border-b-2 pb-2">
-        <h2 className="w-full text-xl sm:text-4xl font-bold">Add New Todo</h2>
+    <div className="flex flex-col flex-wrap p-4 md:m-5 rounded border border-gray-300 shadow-md">
+      <div className="flex gap-6 justify-between items-start flex-col-reverse sm:flex-row mb-2 border-b-2 pb-2">
+        <h2 className="w-full text-2xl sm:text-4xl font-bold">Add New Todo</h2>
         <Link
           to="/"
           className="md:scale-100 px-4 py-2 rounded bg-red-500 text-white hover:bg-red-600"

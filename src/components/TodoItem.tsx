@@ -33,9 +33,9 @@ const TodoItem: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col gap-5 p-4 m-5 rounded border border-gray-300 shadow-md">
-      <div className="flex border-b border-gray-400 justify-between items-center pb-2">
-        <h3 className="text-3xl font-bold ">{todo?.title}</h3>
+    <div className="flex flex-col gap-5 p-4 md:m-5 rounded border border-gray-300 shadow-md">
+      <div className="flex gap-6 items-start flex-col-reverse md:flex-row border-b border-gray-400 justify-between md:items-center pb-2">
+        <h3 className="text-2xl w-full md:text-3xl font-bold ">{todo?.title}</h3>
         <div className="flex gap-2">
           <Link to="/" className="px-4 py-2 rounded bg-gray-700 text-white hover:bg-gray-800">
             Home
@@ -51,8 +51,8 @@ const TodoItem: React.FC = () => {
       <p
         className={
           isToday || isOverdue
-            ? "bg-red-500 text-white py-2 px-2 w-fit rounded"
-            : "text-gray-400"
+            ? "bg-red-500 text-sm md:text-md text-white py-2 px-2 w-fit rounded"
+            : "text-gray-400 text-sm md:text-md"
         }
       >
         Due Date :{" "}
@@ -62,7 +62,7 @@ const TodoItem: React.FC = () => {
           ? `Overdue! it was supposed to be ${formatDate(todo!.date)}`
           : formatDate(todo!.date)}
       </p>
-      <p>{todo?.description}</p>
+      <p className="text-sm md:text-md">{todo?.description}</p>
     </div>
   );
 };
