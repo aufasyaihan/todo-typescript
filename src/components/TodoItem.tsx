@@ -18,7 +18,7 @@ const TodoItem: React.FC<{
 
   const deleteTodoHandler = (id: number) => {
     dispatch(deleteTodo(id));
-    dispatch(setPage("home"));
+    // dispatch(setPage("home"));
   };
 
   const formatDate = (date: Date) => {
