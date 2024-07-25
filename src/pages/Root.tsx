@@ -11,7 +11,7 @@ const RootLayout: React.FC = () => {
     <>
       <div className="flex h-screen">
         <Sidebar todos={todos} />
-        <div className="flex-1 h-screen">
+        <div className="flex-1 h-screen scale-90 md:scale-100">
           <Outlet />
         </div>
       </div>

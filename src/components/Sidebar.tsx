@@ -15,8 +15,8 @@ const Sidebar: React.FC<{
   return (
     <>
       <div
-        className={`md:static py-10 px-5 ${
-          show ? "absolute  w-72" : "w-[5.4rem]"
+        className={`md:static py-10 px-5 z-10 ${
+          show ? "absolute w-72" : "w-[5.4rem]"
         } h-screen bg-gray-800 md:w-72 text-white transition-all ease-in-out duration-300`}
       >
         <div className="flex justify-between items-center w-full">
@@ -27,7 +27,7 @@ const Sidebar: React.FC<{
           >
             Todo
           </h2>
-          <div className="md:hidden" onClick={showSidebarHandler}>
+          <div className="md:hidden cursor-pointer" onClick={showSidebarHandler}>
             <svg
               width="45px"
               height="45px"

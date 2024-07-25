@@ -24,7 +24,7 @@ function App() {
         },
         {
           path: ":id",
-          element: <TodoItem/>,
+          element: <TodoItem />,
         },
       ],
     },
@@ -33,19 +33,6 @@ function App() {
   const router = createBrowserRouter(routes);
 
   return <RouterProvider router={router} />;
-
-  // return (
-  //   <div className="flex">
-  //     <Sidebar todos={todos} />
-  //     <div className="w-full h-full">
-  //       {page === "home" && <HomePage />}
-  //       {page === "add" && <NewTodo />}
-  //       {page === selectedTodoId && (
-  //         <TodoItem todo={todos.find((todo) => todo.id === selectedTodoId)} />
-  //       )}
-  //     </div>
-  //   </div>
-  // );
 }
 
 export default App;
