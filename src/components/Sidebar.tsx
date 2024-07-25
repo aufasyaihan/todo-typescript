@@ -66,7 +66,7 @@ const Sidebar: React.FC<{
           {props.todos.length > 0 ? (
             // <Todos onClick={selectTodoHandler} items={props.todos} />
             props.todos.map((todo) => (
-              <NavLink key={todo.id} to="/todos">
+              <NavLink key={todo.id} to={`/${todo.id}`}>
                 {todo.title}
               </NavLink>
             ))

@@ -24,7 +24,7 @@ function App() {
         },
         {
           path: ":id",
-          element: <TodoItem />,
+          element: <TodoItem/>,
         },
       ],
     },
