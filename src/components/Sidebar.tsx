@@ -1,27 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import Todo from "../models/todo";
-// import Todos from "../components/Todos";
-// import { useDispatch } from "react-redux";
-// import { selectTodo } from "../store/todosSlice";
-// import { setPage } from "../store/pageSlice";
 import { NavLink } from "react-router-dom";
+import { useMediaQuery } from "@react-hook/media-query";
 
 const Sidebar: React.FC<{
   todos: Todo[];
 }> = (props) => {
-  // const dispatch = useDispatch();
-  // const selectTodoHandler = (id: number) => {
-  //   dispatch(selectTodo(id));
-  //   dispatch(setPage(id));
-  // };
+  const [show, setShow] = useState(false);
+  const isMedium = useMediaQuery("(min-width: 768px)");
+
+  const showSidebarHandler = () => {
+    setShow((prevState) => !prevState);
+  };
   return (
     <>
-      <div className="absolute md:static py-10 pl-5 px-10 w-72 h-screen bg-gray-800 text-white">
-        <div className="flex items-center w-full">
-          <h2 className="text-4xl font-bold tracking-wider underline underline-offset-4 decoration-blue-500">
+      <div
+        className={`md:static py-10 px-5 ${
+          show ? "absolute  w-72" : "w-[5.4rem]"
+        } h-screen bg-gray-800 md:w-72 text-white transition-all ease-in-out duration-300`}
+      >
+        <div className="flex justify-between items-center w-full">
+          <h2
+            className={`text-4xl ${
+              !show ? "hidden" : "block"
+            } md:block font-bold tracking-wider underline underline-offset-4 decoration-blue-500`}
+          >
             Todo
           </h2>
-          <div className="md:hidden">
+          <div className="md:hidden" onClick={showSidebarHandler}>
             <svg
               width="45px"
               height="45px"
@@ -63,27 +69,29 @@ const Sidebar: React.FC<{
           </div>
         </div>
         <ul className="mt-2 w-full">
-          {props.todos.length > 0 ? (
-            // <Todos onClick={selectTodoHandler} items={props.todos} />
-            props.todos.map((todo) => (
-              <li key={todo.id} className="w-full">
-                <NavLink
-                  to={`/${todo.id}`}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "block bg-gray-700 text-white px-4 py-2 rounded"
-                      : "block px-4 py-2 rounded hover:bg-gray-700"
-                  }
-                >
-                  {todo.title}
-                </NavLink>
-              </li>
-            ))
-          ) : (
-            <p className="text-gray-400">
-              You have nothing to do, add todos now
-            </p>
-          )}
+          {props.todos.length > 0
+            ? // <Todos onClick={selectTodoHandler} items={props.todos} />
+              props.todos.map((todo, index) => (
+                <li key={todo.id} className="w-full">
+                  <NavLink
+                    to={`/${todo.id}`}
+                    className={({ isActive }) =>
+                      `block px-4 py-2 ${show || isMedium ? "text-start" : "text-center"}  rounded ${
+                        isActive
+                          ? "bg-gray-700 text-white"
+                          : "hover:bg-gray-700"
+                      }`
+                    }
+                  >
+                    {show || isMedium ? todo.title : index + 1}
+                  </NavLink>
+                </li>
+              ))
+            : show && (
+                <p className="text-gray-400">
+                  You have nothing to do, add todos now
+                </p>
+              )}
         </ul>
       </div>
     </>

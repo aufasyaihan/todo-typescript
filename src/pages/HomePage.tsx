@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const HomePage: React.FC = () => {
   return (
     <div className="flex flex-col gap-5 justify-center items-center h-screen w-full">
-      <p className="absolute top-0 m-2 flex gap-2 items-center bg-blue-200 w-fit px-3 py-2 rounded">
+      {/* <p className="absolute top-0 m-2 flex gap-2 items-center bg-blue-200 w-fit px-3 py-2 rounded">
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -18,7 +18,7 @@ const HomePage: React.FC = () => {
           </svg>
         </span>
         this website is not responsive yet and still in development
-      </p>
+      </p> */}
       <h1 className="text-4xl text-center">
         Welcome to Todos with{" "}
         <span className="font-semibold text-blue-600">TypeScript</span>
