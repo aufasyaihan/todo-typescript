@@ -1,21 +1,18 @@
-import NewTodo from "./components/NewTodo";
-import Sidebar from "./pages/Sidebar";
-import HomePage from "./components/HomePage";
+import NewTodo from "./pages/NewTodo";
+import RootLayout from "./pages/Root";
+import HomePage from "./pages/HomePage";
 import TodoItem from "./components/TodoItem";
-import { useSelector } from "react-redux";
-import { RootState } from "./store/store";
-import { createBrowserRouter, RouteObject, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouteObject,
+  RouterProvider,
+} from "react-router-dom";
 
 function App() {
-  const todos = useSelector((state: RootState) => state.todos.todos);
-  // const selectedTodoId = useSelector(
-  //   (state: RootState) => state.todos.selectedTodoId
-  // );
-  // const page = useSelector((state: RootState) => state.page.page);
   const routes: RouteObject[] = [
     {
       path: "/",
-      element: <Sidebar todos={todos} />,
+      element: <RootLayout />,
       children: [
         {
           index: true,
@@ -28,7 +25,7 @@ function App() {
         {
           path: ":id",
           element: <TodoItem />,
-        }
+        },
       ],
     },
   ];
